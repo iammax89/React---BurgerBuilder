@@ -48,9 +48,14 @@ export default class BurgerBuilder extends Component {
     this.updatePurchaseState(updateIngredients);
   };
 
-  purchasedHandler = () => {
+  purchaseHandler = () => {
     this.setState({
-      purchasing: !this.state.purchasing
+      purchasing: true
+    });
+  };
+  purchaseCancelHandler = () => {
+    this.setState({
+      purchasing: false
     });
   };
   removeIngredientHandler = key => {
@@ -80,12 +85,15 @@ export default class BurgerBuilder extends Component {
 
     return (
       <Fragment>
-        <Modal show={this.state.purchasing}>
+        <Modal
+          show={this.state.purchasing}
+          modalClosed={this.purchaseCancelHandler}
+        >
           <OrderSummary ingredients={this.state.ingredients} />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
-          ordered={this.purchasedHandler}
+          ordered={this.purchaseHandler}
           ingredientAdded={this.addIngredientHandler}
           ingredientRemoved={this.removeIngredientHandler}
           disabled={disableInfo}

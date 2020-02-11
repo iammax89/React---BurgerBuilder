@@ -58,6 +58,9 @@ export default class BurgerBuilder extends Component {
       purchasing: false
     });
   };
+  purchaseContinueHandler = () => {
+    alert("You continue!");
+  };
   removeIngredientHandler = key => {
     if (!this.state.ingredients[key]) {
       return;
@@ -89,7 +92,11 @@ export default class BurgerBuilder extends Component {
           show={this.state.purchasing}
           modalClosed={this.purchaseCancelHandler}
         >
-          <OrderSummary ingredients={this.state.ingredients} />
+          <OrderSummary
+            ingredients={this.state.ingredients}
+            purchaseCanceled={this.purchaseCancelHandler}
+            purchaseContinued={this.purchaseContinueHandler}
+          />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls

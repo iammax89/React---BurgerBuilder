@@ -1,0 +1,36 @@
+.ToogleButton {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  &:active {
+    background-color: #5d320a;
+  }
+  div {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+  }
+}
+.ToogleButton {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  &:active {
+    background-color: #9c5d22;
+  }
+  div {
+    width: 35px;
+    height: 5px;
+    background-color: whitesmoke;
+    margin: 6px 0;
+  }
+}
+
+@media (min-width: 500px) {
+  .ToogleButton {
+    display: none;
+  }
+}

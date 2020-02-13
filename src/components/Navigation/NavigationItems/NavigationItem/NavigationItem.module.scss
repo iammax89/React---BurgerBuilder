@@ -22,3 +22,28 @@
     }
   }
 }
+
+@media (max-width: 499px) {
+  .NavigationItem {
+    margin: 10px 0px;
+    width: 100%;
+    height: auto;
+    display: block;
+    a {
+      color: #8f5c2c;
+      text-decoration: none;
+      width: 100%;
+      height: auto;
+      padding: unset;
+      display: block;
+      border-bottom: unset;
+      &:hover,
+      &:active,
+      &.active {
+        border-bottom: none;
+        background-color: unset;
+        color: #40a4c8;
+      }
+    }
+  }
+}

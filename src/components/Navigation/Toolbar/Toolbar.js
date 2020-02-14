@@ -3,6 +3,7 @@ import classes from "./Toolbar.module.scss";
 import Logo from "../../Logo/Logo";
 import NavigationItems from "../NavigationItems/NavigationIteams";
 import ToogleButton from "../SideDrawer/ToogleButton/ToogleButton";
+import PropTypes from "prop-types";
 
 const Toolbar = props => {
   return (
@@ -19,5 +20,7 @@ const Toolbar = props => {
     </header>
   );
 };
-
+Toolbar.propTypes = {
+  type: PropTypes.bool
+};
 export default Toolbar;

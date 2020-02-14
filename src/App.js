@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.scss";
-import Layout from "./components/Layout/Layout";
+import Layout from './components/containers/Layout/Layout';
 import BurgerBuilder from "./components/containers/BurgerBuilder/BurgerBuilder";
 
 function App() {

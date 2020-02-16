@@ -2,10 +2,6 @@ import React, { Fragment } from "react";
 import Button from "../../UI/Button/Button";
 
 export default class OrderSummary extends React.Component {
-  componentWillUpdate() {
-    console.log("[Order Summary will update]");
-  }
-
   render() {
     const ingredientSummary = Object.keys(this.props.ingredients).map(igKey => (
       <li key={igKey}>

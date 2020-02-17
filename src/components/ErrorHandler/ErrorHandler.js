@@ -6,17 +6,20 @@ const ErrorHandler = (Component, axios) => {
     state = {
       error: null
     };
-    componentWillMount() {
-      axios.interceptors.request.use(req => {
-        this.setState({ error: null });
-        return req;
-      });
-      axios.interceptors.response.use(
+
+    constructor() {
+      super();
+      this.reqInterceptor = axios.interceptors.request.use(req => req);
+      this.resInterceptor = axios.interceptors.response.use(
         res => res,
         error => {
           this.setState({ error: error });
         }
       );
+    }
+    componentWillUnmount() {
+      axios.interceptors.request.eject(this.reqInterceptor);
+      axios.interceptors.response.eject(this.resInterceptor);
     }
     errorComfirdHandler = () => {
       this.setState({

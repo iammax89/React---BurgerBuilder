@@ -26,8 +26,9 @@ class BurgerBuilder extends Component {
     };
   }
   componentDidMount() {
+    console.log(this.props);
     axios
-      .get("https://react-my-burger-4545a.firebaseio.com/ingredients.json")
+      .get("ingredients.json")
       .then(Response => {
         this.setState({
           ingredients: Response.data
@@ -73,33 +74,46 @@ class BurgerBuilder extends Component {
     });
   };
   purchaseContinueHandler = () => {
-    this.setState({
-      loading: true
+    const queryParams = [];
+    Object.keys(this.state.ingredients).forEach(i => {
+      queryParams.push(
+        encodeURIComponent(i) +
+          "=" +
+          encodeURIComponent(this.state.ingredients[i])
+      );
     });
-    const order = {
-      ingredients: this.state.ingredients,
-      price: this.state.totalPrice,
-      customer: {
-        name: "Maksym Malyshko",
-        address: {
-          street: "54B Nauky ave.",
-          zipCode: "03083",
-          country: "Ukraine"
-        },
-        email: "iammax89@gmail.com"
-      },
-      deliveryMethod: "fastest"
-    };
-    axios
-      .post("/orders.json", order)
-      .then(Response => {
-        console.log(Response);
-        this.setState({
-          loading: false,
-          purchasing: false
-        });
-      })
-      .catch(Error => console.error(Error));
+    this.props.history.push({
+      pathname: `/checkout`,
+      search: `?${queryParams.join("&")}`
+    });
+
+    // this.setState({
+    //   loading: true
+    // });
+    // const order = {
+    //   ingredients: this.state.ingredients,
+    //   price: this.state.totalPrice,
+    //   customer: {
+    //     name: "Maksym Malyshko",
+    //     address: {
+    //       street: "54B Nauky ave.",
+    //       zipCode: "03083",
+    //       country: "Ukraine"
+    //     },
+    //     email: "iammax89@gmail.com"
+    //   },
+    //   deliveryMethod: "fastest"
+    // };
+    // axios
+    //   .post("/orders.json", order)
+    //   .then(Response => {
+    //     console.log(Response);
+    //     this.setState({
+    //       loading: false,
+    //       purchasing: false
+    //     });
+    //   })
+    //   .catch(Error => console.error(Error));
   };
   removeIngredientHandler = key => {
     if (!this.state.ingredients[key]) {

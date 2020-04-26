@@ -45,8 +45,6 @@ const orderReducer = (state = initialState, action) => {
     case actionTypes.PURCAHSE_BURGER_SUCCESS:
       return purchaseBurgerSuccess(state, action);
 
-    case actionTypes.PURCAHSE_BURGER_FAIL:
-
     case actionTypes.FETCH_ORDERS_INIT:
       return updateObject(state, {
         loading: true

@@ -1,10 +1,11 @@
 import React from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import Layout from "./components/containers/Layout/Layout";
 import BurgerBuilder from "./components/containers/BurgerBuilder/BurgerBuilder";
 import Checkout from "./components/containers/Checkout/Checkout";
 import Orders from "./components/containers/Orders/Orders";
+import Auth from "./components/containers/Auth/Auth";
 
 function App() {
   return (
@@ -12,10 +13,10 @@ function App() {
       <div>
         <Layout>
           <Switch>
-            <Route path="/burger-builder" exact component={BurgerBuilder} />
             <Route path="/checkout" component={Checkout} />
             <Route path="/orders" component={Orders} />
-            <Redirect from="/" to="burger-builder" exact/>
+            <Route path="/auth" component={Auth} />
+            <Route path="/" exact component={BurgerBuilder} />
           </Switch>
         </Layout>
       </div>
